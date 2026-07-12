@@ -372,10 +372,11 @@ body {
 }
 /* Styling to fit your picture perfectly inside the canvas */
 .profile-img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover; /* This crops the image nicely to fit the box frame gracefully */
-    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents the image from stretching out of proportion */
+    display: block;    /* Removes any unwanted spacing at the bottom */
+}
 }
 
 /* Optional: If you want to remove the slightly grey background of the canvas block now that it holds a photo */
