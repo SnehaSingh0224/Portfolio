@@ -386,11 +386,11 @@ body {
 }
 /* Style for project images */
 .work-img {
-    width: 250px%;
-    height: auto;
-    border-radius : 50%;
-    object-fit: cover; /* Crops the image elegantly to fill the card top edge-to-edge */
-    display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Prevents the image from stretching out of proportion */
+        display: block;    /* Removes any unwanted spacing at the bottom */
+    }
 }
 
 /* Removes the default padding from the card top so the image seats perfectly */
