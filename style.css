@@ -390,3 +390,8 @@ body {
     object-fit: cover; /* Crops the image elegantly to fill the card top edge-to-edge */
     display: block;
 }
+
+/* Removes the default padding from the card top so the image seats perfectly */
+.work-thumb {
+    overflow: hidden;
+}
