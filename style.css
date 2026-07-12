@@ -1,0 +1,397 @@
+:root {
+    --bg-main: #f7f4eb;         /* Soft Italian Luxury Beige / Warm Alabaster */
+    --bg-card: #fdfbfa;         /* Pure Ivory for containers */
+    --text-dark: #1c1b18;       /* Very deep charcoal-espresso for contrast */
+    --text-muted: #706b61;      /* Warm taupe for subtitles and notes */
+    --accent: #8c7a6b;          /* Refined earth clay / Muted bronze tone */
+    --border-color: #e8e3d5;    /* Subtle structure split line */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    letter-spacing: -0.2px;
+}
+
+/* --- TOP NAVIGATION BAR --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: rgba(247, 244, 235, 0.85);
+    backdrop-filter: blur(16px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-btn {
+    background: var(--text-dark);
+    color: var(--bg-main) !important;
+    padding: 10px 24px;
+    border-radius: 0px; /* Sharp corners for modern architectural look */
+    font-size: 0.85rem !important;
+    transition: opacity 0.2s !important;
+}
+
+.nav-btn:hover { opacity: 0.9; }
+
+/* --- GRID MASTER CONTAINER --- */
+.main-container {
+    max-width: 1140px;
+    margin: 140px auto 0;
+    padding: 0 4%;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+/* --- EDITORIAL HERO SECTION --- */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    min-height: 65vh;
+    gap: 40px;
+}
+
+.badge {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 4.2rem;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}
+
+.italic-text {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 520px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: var(--text-dark);
+    color: var(--bg-main);
+    text-decoration: none;
+    padding: 16px 32px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover { background-color: var(--accent); }
+
+.btn-secondary {
+    border-bottom: 1px solid var(--text-dark);
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 16px 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+.abstract-canvas {
+    width: 100%;
+    aspect-ratio: 0.85;
+    background: #ebe6da;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-right;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.canvas-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #c4bca6;
+    letter-spacing: 4px;
+}
+
+/* --- STRUCTURAL MINIMAL CARDS --- */
+.split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.studio-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 45px;
+    box-shadow: 0 10px 30px rgba(112, 107, 97, 0.04);
+}
+
+.section-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.studio-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.timeline-node h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
+
+.institution { color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-bottom: 16px; }
+
+.details, .section-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+.section-desc { margin-top: -15px; margin-bottom: 35px; max-width: 600px; }
+
+.cert-list { display: flex; flex-direction: column; gap: 20px; }
+
+.cert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cert-date { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+
+/* --- SKILLS SYSTEM --- */
+.tags-container { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.tag {
+    background: transparent;
+    border: 1px solid #d1c9b7;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    transition: all 0.25s ease;
+}
+
+.tag:hover {
+    background: var(--text-dark);
+    color: var(--bg-main);
+    border-color: var(--text-dark);
+}
+
+/* --- PREMIUM WORK EXHIBITION --- */
+.work-section { margin-top: 15px; }
+
+.section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 35px; }
+
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+}
+
+.work-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card:hover { transform: translateY(-4px); }
+
+.work-thumb {
+    height: 280px;
+    background: #ebe6da;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb-alt { background: #e3ded2; }
+
+.thumb-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.work-info { padding: 35px; }
+
+.work-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 12px; }
+
+.work-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
+
+.work-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.work-link:hover { color: var(--accent); }
+
+/* --- ACCENTS & NUMBERS --- */
+.achieve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+.achieve-card { display: flex; flex-direction: column; gap: 14px; }
+
+.num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+}
+
+/* --- EXQUISITE ESPRESSO FOOTER --- */
+.footer-contact {
+    background: var(--text-dark);
+    color: var(--bg-main);
+    padding: 90px 8%;
+    margin-top: 30px;
+}
+
+.contact-wrap h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}
+
+.contact-wrap p { color: #a39e93; font-size: 1.05rem; max-width: 480px; line-height: 1.6; margin-bottom: 45px; }
+
+.social-row { display: flex; gap: 20px; }
+
+.social-circle {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #423f38;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-main);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+}
+
+.social-circle:hover {
+    background: var(--bg-main);
+    color: var(--text-dark);
+}
+
+/* --- RESPONSIVE ADAPTABILITY --- */
+@media(max-width: 968px) {
+    .hero-section, .split-row, .work-grid, .achieve-grid { grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 3rem; }
+    .hero-visual { display: none; }
+    .navbar { height: 80px; }
+    .main-container { margin-top: 110px; }
+}
+/* Styling to fit your picture perfectly inside the canvas */
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This crops the image nicely to fit the box frame gracefully */
+    display: block;
+}
+
+/* Optional: If you want to remove the slightly grey background of the canvas block now that it holds a photo */
+.abstract-canvas {
+    padding: 0; /* Removes padding so the image goes edge-to-edge in the box */
+    overflow: hidden; /* Keeps the clean sharp corners */
+}
+/* Style for project images */
+.work-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops the image elegantly to fill the card top edge-to-edge */
+    display: block;
+}
+
+/* Removes the default padding from the card top so the image seats perfectly */
+.work-thumb {
+    overflow: hidden;
+}
