@@ -387,6 +387,7 @@ body {
 .work-img {
     width: 250px%;
     height: auto;
+    border-radius : 50%;
     object-fit: cover; /* Crops the image elegantly to fill the card top edge-to-edge */
     display: block;
 }
