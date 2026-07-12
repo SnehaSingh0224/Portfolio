@@ -371,18 +371,22 @@ body {
     .main-container { margin-top: 110px; }
 }
 /* Styling to fit your picture perfectly inside the canvas */
-.hero-img img, 
-.image-container img,
-#hero img {
+/* Prevent the hero image from overflowing the layout */
+.hero img, 
+.hero-image img, 
+.image-container img {
     max-width: 100%;
     height: auto;
-    object-fit: contain; /* This prevents the image from cropping or zooming in */
+    object-fit: contain;
 }
 
-/* Optional: If you want to remove the slightly grey background of the canvas block now that it holds a photo */
-.abstract-canvas {
-    padding: 0; /* Removes padding so the image goes edge-to-edge in the box */
-    overflow: hidden; /* Keeps the clean sharp corners */
+/* If the text and image are supposed to sit side-by-side */
+.hero-content, 
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Keeps it responsive on smaller screens */
 }
 /* Style for project images */
 .work-img {
