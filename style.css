@@ -623,3 +623,47 @@ body {
         text-align: center;
     }
 }
+/* Reverts to your original wide layout style */
+.connect-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Adjust this to match the width of your other sections */
+    margin: 0 auto;
+    padding: 40px;     /* Gives it some breathing room inside the dark box */
+    box-sizing: border-box;
+}
+
+/* Keeps your text block taking up the majority of the space */
+.connect-text {
+    flex: 2;
+    text-align: left;
+}
+
+/* Styles the image without shrinking or breaking the text layout */
+.connect-pic {
+    flex: 1;
+    max-width: 300px;       /* Keeps the image a nice, balanced size */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: grayscale(100%); /* Keeps it black and white */
+    margin-left: 40px;      /* Pushes it away from the text */
+}
+
+/* Stacks them on mobile so it doesn't break on phones */
+@media (max-width: 768px) {
+    .connect-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .connect-text {
+        text-align: center;
+    }
+    .connect-pic {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+}
