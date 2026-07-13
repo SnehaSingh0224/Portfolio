@@ -382,15 +382,89 @@ body {
 
 /* --- RESPONSIVE ADAPTABILITY --- */
 @media(max-width: 968px) {
-    .hero-section, .split-row, .work-grid, .achieve-grid { grid-template-columns: 1fr; }
-    .hero-text h1 { font-size: 2.8rem; }
-    .navbar { height: 80px; }
-    .main-container { margin-top: 110px; gap: 50px; }
+    .menu-toggle {
+        display: block;
+    }
+    
+    .navbar {
+        height: 80px;
+        padding: 0 5%;
+    }
+
+    .main-container {
+        margin-top: 110px;
+        gap: 50px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(247, 244, 235, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 50px;
+        gap: 30px;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .nav-btn {
+        width: 80%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .hero-section, .split-row, .work-grid, .achieve-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem;
+    }
+
     .hero-visual {
         display: block;
         width: 100%;
         max-width: 450px;
         margin: 0 auto;
+    }
+
+    .studio-card {
+        padding: 24px;
+    }
+    
+    .work-info {
+        padding: 24px;
+    }
+    
+    .work-thumb {
+        height: 220px;
+    }
+    
+    .contact-wrap h2 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+    
+    .footer-contact {
+        padding: 60px 24px;
     }
 }
 /* Styling to fit your picture perfectly inside the canvas */
@@ -519,77 +593,7 @@ body {
     }
 }
 
-@media(max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    .navbar {
-        height: 70px;
-        padding: 0 5%;
-    }
-    
-    .main-container {
-        margin-top: 100px;
-        gap: 40px;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: rgba(247, 244, 235, 0.98);
-        backdrop-filter: blur(16px);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding-top: 50px;
-        gap: 30px;
-        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 999;
-        border-top: 1px solid var(--border-color);
-    }
-    
-    .nav-links.active {
-        right: 0;
-    }
-    
-    .nav-links a {
-        font-size: 1.2rem;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
-    
-    .nav-btn {
-        width: 80%;
-        text-align: center;
-        margin-top: 10px;
-    }
-    
-    .studio-card {
-        padding: 24px;
-    }
-    
-    .work-info {
-        padding: 24px;
-    }
-    
-    .work-thumb {
-        height: 220px;
-    }
-    
-    .contact-wrap h2 {
-        font-size: 2.4rem;
-        line-height: 1.2;
-    }
-    
-    .footer-contact {
-        padding: 60px 24px;
-    }
-}
+
 
 .stage-pic {
     grid-column: span 2; /* This will make it twice as wide */
