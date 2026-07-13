@@ -451,7 +451,6 @@ body {
 /* General grid image behavior to keep them uniform and black/white */
 .grid-item {
     overflow: hidden;
-    background-color: #E5E0D5;
 }
 
 .grid-item img {
