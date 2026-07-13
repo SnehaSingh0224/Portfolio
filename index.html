@@ -12,7 +12,10 @@
 
 <nav class="navbar">
     <div class="logo">PORTFOLIO<span>.</span></div>
-    <div class="nav-links">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
         <a href="#about">Profile</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
@@ -36,7 +39,6 @@
             <div class="abstract-canvas">
                 <img src="images/profile.jpg" alt="Profile Picture" class="profile-img">
             </div>
-        </div>
         </div>
     </section>
 
@@ -215,6 +217,33 @@
     </section>
 
 </main>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close mobile menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        });
+    });
+</script>
 
 </body>
 </html>
