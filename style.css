@@ -598,3 +598,21 @@ body {
 .stage-pic {
     grid-column: span 2; /* This will make it twice as wide */
 }
+.connect-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1917; /* Your current dark background color */
+    padding: 40px;
+}
+
+.connect-content {
+    flex: 1;
+}
+
+.connect-img {
+    flex: 1;
+    max-width: 400px; /* Adjust this to control the image size */
+    height: auto;
+    border-radius: 8px; /* Optional: rounds the corners slightly */
+}
