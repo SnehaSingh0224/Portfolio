@@ -490,3 +490,6 @@ body {
         grid-auto-rows: 160px; /* Scales down image rows for smaller screens */
     }
 }
+.stage-pic {
+    grid-column: span 2; /* This will make it twice as wide */
+}
