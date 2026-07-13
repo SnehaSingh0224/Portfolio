@@ -667,3 +667,32 @@ body {
         margin-top: 30px;
     }
 }
+/* --- Let's Connect Heading --- */
+.connect-text h2 {
+    font-family: 'Playfair Display', Georgia, serif; /* Elegant serif font */
+    font-size: 3rem;               /* Makes it large like your header section */
+    font-weight: 400;              /* Regular weight for that elegant, clean look */
+    color: #fcfbf7;                /* Cream/off-white color from your site */
+    margin-bottom: 10px;           /* Spacing below the title */
+    letter-spacing: -0.02em;       /* Slightly tighter tracking for modern look */
+}
+
+/* --- Ready for What's Next Heading --- */
+.connect-text h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #fcfbf7;
+    margin-bottom: 20px;
+}
+
+/* --- Description Paragraph Text --- */
+.connect-text p {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Clean sans-serif */
+    font-size: 1rem;
+    font-weight: 300;              /* Light weight to match your 'About Me' text */
+    line-height: 1.6;              /* Gives it nice breathing room vertically */
+    color: #d1cfc7;                /* Slightly muted off-white for better readability */
+    max-width: 500px;              /* Keeps the lines from stretching too wide */
+    margin-bottom: 30px;
+}
