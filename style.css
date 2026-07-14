@@ -606,7 +606,7 @@ body::after {
 .about-container {
     display: flex;
     gap: 4rem;
-    padding: 6rem 0;
+    padding: 5rem 0 1.5rem 0;
     align-items: flex-start;
     border-top: 1px solid #E5E0D5; /* Subtle division line from previous section */
 }
@@ -698,7 +698,7 @@ body::after {
     .about-container {
         flex-direction: column;
         gap: 3rem;
-        padding: 4rem 0;
+        padding: 3rem 0 1rem 0;
     }
 
     .about-text-column {
