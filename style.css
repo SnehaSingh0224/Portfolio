@@ -937,12 +937,6 @@ body::after {
    CREATIVE PRELOADER & CUSTOM CURSOR INTERACTION
    ========================================================================== */
 
-/* --- Hide Default Cursor on Desktop --- */
-@media (min-width: 969px) {
-    body, a, button, .tag, .social-circle, .work-card, .menu-toggle {
-        cursor: none !important;
-    }
-}
 
 /* --- Preloader Overlay --- */
 .preloader {
@@ -1004,50 +998,4 @@ body::after {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-}
-
-/* --- Interactive Custom Cursor --- */
-.custom-cursor {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 10000;
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.custom-cursor-follower {
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9999;
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Hover States */
-.custom-cursor.hovered {
-    width: 4px;
-    height: 4px;
-    background-color: var(--text-dark);
-}
-
-.custom-cursor-follower.hovered {
-    width: 48px;
-    height: 48px;
-    background-color: rgba(140, 122, 107, 0.08);
-    border-color: var(--text-dark);
-}
-
-/* Mobile & Tablet Exception */
-@media (max-width: 968px) {
-    .custom-cursor, .custom-cursor-follower {
-        display: none !important;
-    }
 }
