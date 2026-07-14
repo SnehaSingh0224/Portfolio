@@ -25,6 +25,30 @@ body {
     letter-spacing: -0.2px;
 }
 
+body::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(140, 122, 107, 0.05) 0%, rgba(247, 244, 235, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: -10%;
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, rgba(196, 188, 166, 0.05) 0%, rgba(247, 244, 235, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* --- TOP NAVIGATION BAR --- */
 .navbar {
     position: fixed;
@@ -252,6 +276,55 @@ body {
     font-size: 2.2rem;
     font-weight: 400;
     margin-bottom: 30px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 0;
+    background-color: var(--border-color);
+    transition: height 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible .timeline::before {
+    height: 100%;
+}
+
+.timeline-node {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-node::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    border: 2px solid var(--bg-card);
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.reveal.visible .timeline-node::before {
+    background-color: var(--accent);
+    transform: scale(1);
+    transition-delay: 0.8s;
+}
+
+.timeline-node:hover::before {
+    background-color: var(--text-dark);
+    transform: scale(1.3);
 }
 
 .timeline-node h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
@@ -505,8 +578,16 @@ body {
 
 /* Optional: If you want to remove the slightly grey background of the canvas block now that it holds a photo */
 .abstract-canvas {
-    padding: 0; /* Removes padding so the image goes edge-to-edge in the box */
-    overflow: hidden; /* Keeps the clean sharp corners */
+    padding: 0;
+    overflow: hidden;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morphShape 8s ease-in-out infinite alternate;
+    transition: border-radius 1s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visual:hover .abstract-canvas {
+    border-radius: 8px;
+    transform: translateY(-8px) scale(1.02);
 }
 /* Style for project images */
 .work-img {
@@ -576,17 +657,33 @@ body {
 /* General grid image behavior to keep them uniform and black/white */
 .grid-item {
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.about-gallery-grid.visible .grid-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-gallery-grid.visible .img-1 { transition-delay: 0.1s; }
+.about-gallery-grid.visible .img-2 { transition-delay: 0.25s; }
+.about-gallery-grid.visible .img-3 { transition-delay: 0.4s; }
+.about-gallery-grid.visible .img-4 { transition-delay: 0.55s; }
+.about-gallery-grid.visible .img-5 { transition-delay: 0.7s; }
 
 .grid-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    filter: grayscale(100%);
+    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.grid-item img:hover {
-    transform: scale(1.03);
+.grid-item:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 /* Exact layout matching coordinates based on your screenshot */
@@ -730,25 +827,11 @@ body {
    ========================================================================== */
 
 /* --- Hero Load Sequence --- */
-.hero-text h1 {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.1s;
-}
-
-.hero-sub {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.25s;
-}
-
 .hero-actions {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
     animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.6s;
 }
 
 .hero-visual {
@@ -769,6 +852,47 @@ body {
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
+    }
+}
+
+/* --- Text Mask Reveal (Clip-Path) Style --- */
+.mask-reveal {
+    overflow: hidden;
+    display: block;
+}
+
+.mask-reveal span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: maskTextShow 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mask-reveal span:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.mask-reveal .italic-text {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: maskTextShow 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.25s;
+}
+
+.mask-reveal-p {
+    overflow: hidden;
+    display: block;
+}
+
+.mask-reveal-p span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: maskTextShow 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes maskTextShow {
+    to {
+        transform: translateY(0);
     }
 }
 
@@ -793,14 +917,28 @@ body {
         transition: none !important;
     }
     
-    .hero-text h1, .hero-sub, .hero-actions, .hero-visual {
+    .hero-text h1, .hero-sub, .hero-actions, .hero-visual, .mask-reveal span, .mask-reveal .italic-text, .mask-reveal-p span {
         opacity: 1 !important;
         transform: none !important;
         animation: none !important;
     }
     
-    .work-card, .work-card img, .social-circle, .nav-links a::after {
+    .work-card, .work-card img, .social-circle, .nav-links a::after, .abstract-canvas {
         transition: none !important;
         transform: none !important;
+        animation: none !important;
+    }
+}
+
+/* --- Morph Shape Keyframes --- */
+@keyframes morphShape {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+    }
+    100% {
+        border-radius: 50% 50% 30% 70% / 60% 40% 50% 50%;
     }
 }
