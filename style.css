@@ -690,9 +690,9 @@ body {
 .connect-text p {
     font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Clean sans-serif */
     font-size: 1rem;
-    font-weight: 300;              /* Light weight to match your 'About Me' text */
-    line-height: 1.6;              /* Gives it nice breathing room vertically */
-    color: #d1cfc7;                /* Slightly muted off-white for better readability */
-    max-width: 500px;              /* Keeps the lines from stretching too wide */
+    font-weight: 300; /* Light weight to match your 'About Me' text */
+    line-height: 1.6; /* Gives it nice breathing room vertically */
+    color: #d1cfc7; /* Slightly muted off-white for better readability */
+    max-width: 500px; /* Keeps the lines from stretching too wide */
     margin-bottom: 30px;
 }
