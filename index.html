@@ -26,7 +26,7 @@
 
 <main class="main-container">
 
-    <section id="about" class="hero-section">
+    <section id="hero" class="hero-section">
         <div class="hero-text">
             <h1>Hey I am Sneha Singh. <br><span class="italic-text">CSE (general), student of Woxsen university.</span></h1>
             <p class="hero-sub"> Here you’ll get to know about me. Explore my projects to learn more about what I do.</p>
@@ -43,10 +43,10 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="about-container">
+    <section id="about" class="about-container reveal">
 
         <!-- Left Column: Typography -->
-        <div class="about-text-column">
+        <div class="about-text-column reveal">
             <span class="section-subtitle">PRESENTATION 002</span>
             <h2 class="about-heading">About <br><span class="serif-italic">Me.</span></h2>
 
@@ -57,7 +57,7 @@
         </div>
 
         <!-- Right Column: Replicated Collage Grid -->
-        <div class="about-gallery-grid">
+        <div class="about-gallery-grid reveal">
             <!-- Photo 1 (Top Left) -->
             <div class="grid-item img-1">
                 <img src="images/editing.jpg" alt="Basketball player">
@@ -83,7 +83,7 @@
     </section>
 
     <div class="split-row">
-        <section id="education" class="studio-card">
+        <section id="education" class="studio-card reveal">
             <span class="section-tag">01 / Journey</span>
             <h2>Education</h2>
             <div class="timeline">
@@ -105,7 +105,7 @@
             </div>
         </section>
 
-        <section id="certifications" class="studio-card">
+        <section id="certifications" class="studio-card reveal">
             <span class="section-tag">02 / Milestones</span>
             <h2>Certifications</h2>
             <div class="cert-list">
@@ -137,7 +137,7 @@
         </section>
     </div>
 
-    <section id="skills" class="studio-card full-width">
+    <section id="skills" class="studio-card full-width reveal">
         <span class="section-tag">03 / Tech Stack</span>
         <h2>Core Competencies</h2>
         <p class="section-desc">Tools and languages I use to translate complex concepts into clean, maintainable code.</p>
@@ -157,7 +157,7 @@
         <div class="work-grid">
 
             <!-- Project 1 -->
-            <div class="work-card">
+            <div class="work-card reveal">
                 <div class="work-thumb">
                     <!-- Replace the old label with this image tag -->
                     <img src="images/project1.jpg" alt="Backend Architecture" class="work-img">
@@ -169,7 +169,7 @@
                 </div>
             </div>
 
-            <div class="work-card">
+            <div class="work-card reveal">
                 <div class="work-thumb">
                     <img src="images/project2.jpg" alt="Project Graduation" class="work-img">
                 </div>
@@ -185,7 +185,7 @@
         </div>
     </section>
 
-    <section id="achievements" class="studio-card">
+    <section id="achievements" class="studio-card reveal">
         <span class="section-tag">05 / Recognition</span>
         <h2>Achievements & Honors</h2>
         <div class="achieve-grid">
@@ -200,14 +200,14 @@
         </div>
     </section>
 
-    <section id="contact" class="footer-contact">
+    <section id="contact" class="footer-contact reveal">
         <section class="connect-section">
             <div class="connect-container">
 
                 <!-- Left Side: Text Content -->
                 <div class="connect-text">
-                    <h1>Let's Connect</h1>
-                    <h2>Ready for What's Next!</h2>
+                    <h2>Let's Connect</h2>
+                    <h1>Ready for What's Next!</h1>
                     <p>I'm excited to begin this journey, meeting incredible classmates and mentors, collaborate on innovative projects and grow together.</p>
                     <!-- Your social icon buttons here -->
                 </div>
@@ -226,7 +226,6 @@
                     <i class="fa-brands fa-instagram"></i>
                 </a>
             </div>
-        </div>
     </section>
 
 </main>
@@ -255,6 +254,23 @@
             icon.classList.remove('fa-xmark');
             icon.classList.add('fa-bars');
         });
+    });
+
+    // Intersection Observer for scroll-triggered reveal animations
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
     });
 </script>
 

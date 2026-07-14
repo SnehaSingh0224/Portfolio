@@ -64,10 +64,32 @@ body {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: color 0.2s;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    padding-bottom: 4px;
 }
 
-.nav-links a:hover { color: var(--accent); }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transform-origin: bottom right;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 
 .nav-btn {
     background: var(--text-dark);
@@ -285,10 +307,14 @@ body {
 .work-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(112, 107, 97, 0.02);
 }
 
-.work-card:hover { transform: translateY(-4px); }
+.work-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(112, 107, 97, 0.08);
+}
 
 .work-thumb {
     height: 280px;
@@ -372,12 +398,14 @@ body {
     color: var(--bg-main);
     text-decoration: none;
     font-size: 1.1rem;
-    transition: all 0.2s;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .social-circle:hover {
     background: var(--bg-main);
     color: var(--text-dark);
+    border-color: var(--bg-main);
+    transform: translateY(-3px);
 }
 
 /* --- RESPONSIVE ADAPTABILITY --- */
@@ -695,4 +723,84 @@ body {
     color: #d1cfc7; /* Slightly muted off-white for better readability */
     max-width: 500px; /* Keeps the lines from stretching too wide */
     margin-bottom: 30px;
+}
+
+/* ==========================================================================
+   AESTHETIC ANIMATIONS & TRANSITIONS SYSTEM
+   ========================================================================== */
+
+/* --- Hero Load Sequence --- */
+.hero-text h1 {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.1s;
+}
+
+.hero-sub {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.25s;
+}
+
+.hero-actions {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+.hero-visual {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+    animation: visualExpand 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes heroFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes visualExpand {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* --- Scroll-Triggered Reveal Effect --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Accessibility: Reduce Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .hero-text h1, .hero-sub, .hero-actions, .hero-visual {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    .work-card, .work-card img, .social-circle, .nav-links a::after {
+        transition: none !important;
+        transform: none !important;
+    }
 }
